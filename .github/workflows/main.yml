@@ -1,18 +1,25 @@
 name: workflow1
-on: 
-   push:
-        branches:
-        - main
 
-job:
-    job1:
-        runs-on: ubuntu-latest
-        steps:
-        -name: checkout code
-          uses: actions/checkout@v2
-        -name: setup python
-          uses: actions/setup-python@v4
-         with: 
-             python-version '3.10'
-        -name: check python version
-          run: echo 'welcome to github action'
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: check python version
+        run: python --version
+
+      - name: print message
+        run: echo "welcome to github action"
